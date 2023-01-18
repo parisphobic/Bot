@@ -6,7 +6,7 @@ const noblox = require('noblox.js')
 
 const { readdirSync } = require('fs')
 
-const { Token } = require('./config.json');
+const { Token } = process.env.Token;
 const { fileURLToPath } = require('url');
 
 const Bot = new Client({
