@@ -14,10 +14,9 @@ module.exports = {
     * 
     * @param {Client} Bot 
     * @param {CommandInteraction} interaction 
-    * @param {String[]} args
     */
 
-   async slashExecute(Bot, interaction, args) {
+   async slashExecute(Bot, interaction) {
      interaction.reply('Test')
    }
 }
