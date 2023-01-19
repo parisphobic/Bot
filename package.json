@@ -16,6 +16,8 @@
     "discord-api-types": "^0.37.28",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
-    "noblox.js": "^4.13.1"
+    "git": "^0.1.5",
+    "noblox.js": "^4.13.1",
+    "nodemon": "^2.0.20"
   }
 }
