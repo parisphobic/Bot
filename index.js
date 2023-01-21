@@ -21,7 +21,7 @@ const Bot = new Client({
 Bot.commands = new Map()
 const slashCommands = []
 
-const rest = new REST({ version: '10' }).setToken(Token);
+const rest = new REST({ version: '10' }).setToken('MTA2NDczOTA1NzA2Nzg5MjczNg.GA7nRN.-ZcRizcfhMGCPwSobS3XW6ZXZ0OxBVMuD5L_yI');
 
 const commands = readdirSync('./commands').filter((File) => 
     File.endsWith('.js')
@@ -46,3 +46,7 @@ for (const event of events) {
 }
 
 Bot.login(process.env.Token);
+
+const BotID = '1064739057067892736'
+const ServerID = '1059654500878655599'
+rest.put(Routes.applicationGuildCommands(BotID, ServerID), { body: slashCommands })
