@@ -2,7 +2,6 @@ require('dotenv').config()
 
 const { REST, Routes } = require('discord.js');
 const { Client, GatewayIntentBits, ActivityType, Presence } = require('discord.js')
-const noblox = require('noblox.js')
 
 const { readdirSync } = require('fs')
 
@@ -31,7 +30,7 @@ const events = readdirSync('./Events')
 
 for (const command of commands) {
 	const file = require(`./commands/${command}`)
-	Bot.commands.set(file.name.toLowerCase() , file )
+	Bot.commands.set(file.name.toLowerCase() , file)
 
 	if (file.data) {
 		slashCommands.push(file.data)

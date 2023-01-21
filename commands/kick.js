@@ -37,9 +37,7 @@ module.exports = {
      DmEmbed.setColor('2f3136')
      DmEmbed.setThumbnail(interaction.guild.iconURL())
      DmEmbed.setTimestamp()
-     
 
-     
      await KickMember.send({ embeds: [DmEmbed] }).nocatch(err => {
       return
      })

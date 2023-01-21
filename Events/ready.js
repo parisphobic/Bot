@@ -1,4 +1,5 @@
-const { Client, ActivityType } = require('discord.js')
+const { Client, ActivityType, Status } = require('discord.js')
+const noblox = require('noblox.js')
 
 /**
  * 
@@ -8,9 +9,8 @@ const { Client, ActivityType } = require('discord.js')
 
 module.exports.execute = async (Bot) => {
     console.log(`${Bot.user.tag} has logged in`)
-	Bot.user.setActivity('FroyoTopia', { type: ActivityType.Watching })
-	Bot.user.setStatus("idle")
-
+	Bot.user.setActivity('FroyoTopia', { type : ActivityType.Watching})
+	Bot.user.setStatus({ Status : Status.Idle})
 	try {
 		console.log('Started refreshing application (/) commands.')
 		const channel = Bot.channels.cache.get('1065816008436228196')
