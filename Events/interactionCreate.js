@@ -1,4 +1,6 @@
 const { Client, Interaction } = require('discord.js')
+const ms = require('ms')
+const fs = require('fs')
 
 /**
  * 
@@ -6,9 +8,16 @@ const { Client, Interaction } = require('discord.js')
  * @param {Interaction} interaction
  */
 
+
 module.exports.execute = (Bot, interaction) => {
     if (!interaction.isCommand()) return
     const Command = interaction.commandName
     if (!Bot.commands.has(Command)) return
-    Bot.commands.get(Command).slashExecute(Bot, interaction)
+    
+    try{
+        Bot.commands.get(Command).slashExecute(Bot, interaction)
+    } catch (error){
+        interaction.reply("There was an error trying to run this command, please try again later.")
+        console.log(error)
+    }
 }

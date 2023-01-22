@@ -1,12 +1,9 @@
 require('dotenv').config()
 
-const { REST, Routes } = require('discord.js');
-const { Client, GatewayIntentBits, ActivityType, Presence } = require('discord.js')
+const { REST, Routes, Collection } = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js')
 
 const { readdirSync } = require('fs')
-
-const { Token } = process.env.Token;
-const { fileURLToPath } = require('url');
 
 const Bot = new Client({
 	intents: [
@@ -45,6 +42,7 @@ for (const event of events) {
 }
 
 Bot.login(process.env.Token);
+Bot.cooldowns = new Collection()
 
 const BotID = '1064739057067892736'
 const ServerID = '1059654500878655599'
