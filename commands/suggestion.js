@@ -12,7 +12,7 @@ module.exports = {
    .setDescription('A command for suggesting things to do around the server and/or game')
    .addStringOption(option => option.setName('suggestion').setDescription('What do you want to suggest?').setRequired(true))
    .addAttachmentOption(option => option.setName('image').setDescription('An example of what you are suggesting. (Not required)')),
-   
+
    /**
     * 
     * @param {Client} Bot 
@@ -35,7 +35,7 @@ module.exports = {
     channel.send({embeds: [embed]}).then((msg) => {
         msg.react('1066472444560429117')
         msg.react('1066472514672406669')
-    });
+    })
 
     interaction.reply({content: "Thank you for submitting a suggestion! We'll be looking into it soon! You can find your suggestion at <#1066215395624755220>", ephemeral: true})
    }
