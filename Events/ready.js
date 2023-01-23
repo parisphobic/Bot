@@ -10,7 +10,7 @@ const noblox = require('noblox.js')
 module.exports.execute = async (Bot) => {
     console.log(`${Bot.user.tag} has logged in`)
 	Bot.user.setActivity('FroyoTopia', { type : ActivityType.Watching})
-	Bot.user.setStatus({ Status : Status.Idle})
+	Bot.user.setStatus('Idle')
 	try {
 		console.log('Started refreshing application (/) commands.')
 		const channel = Bot.channels.cache.get('1065816008436228196')

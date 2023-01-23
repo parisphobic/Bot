@@ -6,7 +6,7 @@ const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     name: 'suggestion',
     description: "A command for suggesting things to do around the server and/or game",
-    cooldown: 5,
+    cooldown: 10000,
     data : new SlashCommandBuilder() 
    .setName('suggestion')
    .setDescription('A command for suggesting things to do around the server and/or game')
@@ -20,6 +20,7 @@ module.exports = {
     */
 
    async slashExecute(Bot, interaction) {
+    try{
     const embed = new EmbedBuilder()
     embed.setAuthor({name: interaction.user.tag, iconURL: interaction.user.displayAvatarURL({dynamic : true})})      
     embed.setColor(`f8c6d9`)
@@ -38,5 +39,8 @@ module.exports = {
     })
 
     interaction.reply({content: "Thank you for submitting a suggestion! We'll be looking into it soon! You can find your suggestion at <#1066215395624755220>", ephemeral: true})
+}   catch (err){
+    interaction.editReply({content: `Error: ${err.message} please report this to our bot developer <@937825212769120346> as soon as possible.`, ephemeral: true})
+}
    }
 }

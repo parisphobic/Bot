@@ -2,12 +2,12 @@ const { Client , Message, CommandInteraction} = require('discord.js')
 const { SlashCommandBuilder } = require('@discordjs/builders')
 
 module.exports = {
-    name: 'Chanel',
-    description: "A command for testing",
-    cooldown: 5000,
+    name: 'wave',
+    description: "wave",
+    cooldown: 0,
     data : new SlashCommandBuilder() 
-   .setName('chanel')
-   .setDescription('chanel'),
+   .setName('wave')
+   .setDescription('wave'),
    /**
     * 
     * @param {Client} Bot 
@@ -15,6 +15,6 @@ module.exports = {
     */
 
    async slashExecute(Bot, interaction) {
-     interaction.reply('chanel a biggie boo')
+     interaction.reply('hai!')
    }
 }

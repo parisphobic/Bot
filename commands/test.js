@@ -7,6 +7,7 @@ const { wait } = promisify(setTimeout)
 module.exports = {
     name: 'Test',
     description: "A command for testing",
+    cooldown: 5000,
     data : new SlashCommandBuilder() 
    .setName('test')
    .setDescription('Test'),
