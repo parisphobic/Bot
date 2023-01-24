@@ -30,7 +30,7 @@ module.exports = {
       Embed.setThumbnail(PlayerThumbnail[0].imageUrl)
       Embed.setColor('f8c6d9')
       Embed.addFields(
-        {name: '\u200B', value: '\u200B' },
+        {name: '\u200B', value: '' },
         {name: 'Join Date: ', value: `${info.joinDate}`},
         {name: 'Friends: ', value: `${info.friendCount}` || '0', inline: true},
         {name: 'Followers: ', value: `${info.followerCount.toLocaleString("en-US")}` || '0', inline: true},
