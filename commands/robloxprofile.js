@@ -5,7 +5,7 @@ const noblox = require('noblox.js')
 module.exports = {
     name: 'robloxwhois',
     description: "robloxwhois",
-    cooldown: 0,
+    cooldown: 3000,
     data : new SlashCommandBuilder() 
    .setName('robloxwhois')
    .setDescription('robloxwhois')
@@ -17,31 +17,39 @@ module.exports = {
     */
 
    async slashExecute(Bot, interaction) {
-    let user = interaction.options.get('user')
-    await interaction.deferReply({ephemeral: true})
+    const user = interaction.options.get('user')
     try
     {
-      const id = await noblox.getIdFromUsername(user)
+      const id = await noblox.getIdFromUsername(user.value)
       const info = await noblox.getPlayerInfo(id)
       const PlayerThumbnail = await noblox.getPlayerThumbnail([id], '720x720', 'png', true, 'body')
       const AuthorIcon = await noblox.getPlayerThumbnail([id], '720x720', 'png', true, 'headshot')
       const Embed = new EmbedBuilder()
-      Embed.setAuthor({name: `@${(await info).displayName} (${user})`, iconURL: AuthorIcon[0].imageUrl, url: `https://roblox.com/users/${id}/profile`})
-      Embed.setDescription((await info).blurb || 'No description')
-      Embed.addFields(
-        {name: 'Join Date: ', value: (await info).joinDate},
-        {name: 'Friends: ', value: (await info).friendCount},
-        {name: 'Followers: ', value: (await info).followerCount},
-        {name: 'Following: ', value: (await info).followingCount},
-      )
+      Embed.setAuthor({name: `@${info.displayName} (${info.username})`, iconURL: AuthorIcon[0].imageUrl, url: `https://roblox.com/users/${id}/profile`})
+      Embed.setDescription(info.blurb || 'No description')
       Embed.setThumbnail(PlayerThumbnail[0].imageUrl)
+      Embed.setColor('f8c6d9')
+      Embed.addFields(
+        {name: '\u200B', value: '\u200B' },
+        {name: 'Join Date: ', value: `${info.joinDate}`},
+        {name: 'Friends: ', value: `${info.friendCount}` || '0', inline: true},
+        {name: 'Followers: ', value: `${info.followerCount.toLocaleString("en-US")}` || '0', inline: true},
+        {name: 'Following: ', value: `${info.followingCount.toLocaleString("en-US")}` || '0', inline: true},
+        {name: 'Old Names:', value: `${info.oldNames}` || 'No previous usernames', inline: true},
+      ),
 
-      interaction.editReply({embeds: Embed})
+      interaction.reply({embeds: [Embed], ephemeral: false})
     }
     catch (err)
     {
       console.log(err)
-      interaction.editReply({content: `Error: ${err.message} | please report this to our bot developer <@937825212769120346> as soon as possible.`, ephemeral: true})
+      const ErrEmbed = new EmbedBuilder()
+      ErrEmbed.setAuthor({name: interaction.user.tag, iconURL: interaction.user.displayAvatarURL({dynamic: true})})
+      ErrEmbed.setColor('ff0000')
+      ErrEmbed.setTitle('ERROR!')
+      ErrEmbed.setDescription(`Error: ${err.message} | please report this to our bot developer <@937825212769120346> as soon as possible.`)
+      ErrEmbed.setTimestamp()
+      interaction.reply({embeds: [ErrEmbed], ephemeral: true})
     }
   }
 }
