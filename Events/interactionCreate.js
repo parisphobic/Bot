@@ -15,7 +15,7 @@ module.exports.execute = (Bot, interaction) => {
     
     if (!Bot.cooldowns.has(Command.name)){ 
         Bot.cooldowns.set(Command.name, new Collection())
-    };
+    }
         const now = Date.now();
         const timestamps = Bot.cooldowns.get(Command.name);
         const cooldownAmount = Bot.commands.get(Command).cooldown;

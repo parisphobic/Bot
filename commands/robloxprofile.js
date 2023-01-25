@@ -30,12 +30,12 @@ module.exports = {
       Embed.setThumbnail(PlayerThumbnail[0].imageUrl)
       Embed.setColor('f8c6d9')
       Embed.addFields(
-        {name: '\u200B', value: '\u200B' },
-        {name: 'Join Date: ', value: `${info.joinDate}`},
+        {name: '\u200B', value: ' ' },
+        {name: 'Join Date: ', value: `${info.joinDate.toUTCString()}`},
         {name: 'Friends: ', value: `${info.friendCount}` || '0', inline: true},
         {name: 'Followers: ', value: `${info.followerCount.toLocaleString("en-US")}` || '0', inline: true},
         {name: 'Following: ', value: `${info.followingCount.toLocaleString("en-US")}` || '0', inline: true},
-        {name: 'Old Names:', value: `${info.oldNames}` || 'No previous usernames', inline: true},
+        {name: 'Old Names:', value: `${info.oldNames}` || 'No previous usernames', inline: false},
       ),
 
       interaction.reply({embeds: [Embed], ephemeral: false})
