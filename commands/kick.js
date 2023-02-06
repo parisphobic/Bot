@@ -8,9 +8,6 @@ const {
 const { SlashCommandBuilder } = require("@discordjs/builders");
 
 const { promisify } = require("util");
-const { demote } = require("noblox.js");
-const chanel = require("./chanel");
-const { wait } = promisify(setTimeout);
 
 module.exports = {
   name: "Kick",
