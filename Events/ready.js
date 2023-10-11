@@ -7,6 +7,8 @@ const noblox = require("noblox.js");
  */
 
 module.exports.execute = async (Bot) => {
+  Bot.login(process.env.Token);
+   
   console.log(`${Bot.user.tag} has logged in`);
   Bot.user.setActivity("FroyoTopia", { type: ActivityType.Watching });
   Bot.user.setStatus(Status.Idle);
