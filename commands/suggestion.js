@@ -57,7 +57,7 @@ module.exports = {
         embed.setImage(image.attachment.proxyURL);
       }
 
-      const channel = Bot.channels.cache.get("1066215395624755220");
+      const channel = Bot.channels.cache.get("1161856326729728070");
       channel.send({ embeds: [embed] }).then((msg) => {
         msg.react("1066472444560429117");
         msg.react("1066472514672406669");
@@ -65,7 +65,7 @@ module.exports = {
 
       interaction.reply({
         content:
-          "Thank you for submitting a suggestion! We'll be looking into it soon! You can find your suggestion at <#1066215395624755220>",
+          "Thank you for submitting a suggestion! We'll be looking into it soon! You can find your suggestion at <#1161856326729728070>",
         ephemeral: true,
       });
     } catch (err) {

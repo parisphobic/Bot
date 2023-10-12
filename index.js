@@ -14,10 +14,12 @@ const Bot = new Client({
   ],
 });
 
+Bot.login(process.env.Token);
+
 Bot.commands = new Map();
 const slashCommands = [];
 
-const rest = new REST({ version: "10" }).setToken(process.env.Token );
+const rest = new REST({ version: "10" }).setToken("MTA2NDczOTA1NzA2Nzg5MjczNg.GWEuzD.4A-TZj2PftQc5ZAMmoIaM3lQJDmivWaegxyO1M");
 
 const commands = readdirSync("./commands").filter((File) =>
   File.endsWith(".js")
